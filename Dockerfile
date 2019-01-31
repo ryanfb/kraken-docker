@@ -28,14 +28,24 @@ RUN apt-get update && apt-get -y install --no-install-recommends \
     && pip3 install pbr \
     && pip3 install -r requirements.txt \
     && pip3 install . \
-    && kraken get default \
-    && kraken get fraktur \
     && apt-get -y remove --purge --auto-remove \
         gcc \
         python3-pip \
         python3-setuptools \
     && apt-get clean \
     && rm -rf /tmp/* /var/lib/apt/lists/* /var/tmp/* .git
+RUN    kraken get default \
+    && kraken get fraktur \
+    && kraken get script-detection \
+    && kraken get goodell \
+    && kraken get loeb \
+    && kraken get migne-njp \
+    && kraken get migne \
+    && kraken get non-teubner-german-serif \
+    && kraken get omnibus \
+    && kraken get porson \
+    && kraken get rahlfs \
+    && kraken get teubner-serif
 
 VOLUME /data
 WORKDIR /data
