@@ -22,7 +22,8 @@ RUN apt-get update && apt-get -y install --no-install-recommends \
         python3-pil \
         python3-click \
         python3-lxml \
-        locales-all \
+        locales \
+    && locale-gen en_US && locale-gen en_US.UTF-8 && update-locale \
     && pip3 install wheel \
     && pip3 install pbr \
     && pip3 install -r requirements.txt \
@@ -31,6 +32,7 @@ RUN apt-get update && apt-get -y install --no-install-recommends \
     && kraken get fraktur \
     && apt-get -y remove --purge --auto-remove \
         gcc \
+        python3-pip \
         python3-setuptools \
     && apt-get clean \
     && rm -rf /tmp/* /var/lib/apt/lists/* /var/tmp/* .git
