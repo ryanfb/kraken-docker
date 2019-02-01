@@ -26,7 +26,7 @@ RUN apt-get update && apt-get -y install --no-install-recommends \
     && locale-gen en_US && locale-gen en_US.UTF-8 && update-locale \
     && pip3 install wheel \
     && pip3 install pbr \
-    && wget https://download.pytorch.org/whl/cu100/torch-1.0.0-cp36-cp36m-linux_x86_64.whl \
+    && wget -q https://download.pytorch.org/whl/cu100/torch-1.0.0-cp36-cp36m-linux_x86_64.whl \
     && pip3 install torch-1.0.0-cp36-cp36m-linux_x86_64.whl \
     && pip3 install torchvision \
     && rm -v torch-1.0.0-cp36-cp36m-linux_x86_64.whl \
