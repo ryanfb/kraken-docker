@@ -1,4 +1,4 @@
-FROM nvidia/cuda:10.0-cudnn7-devel-ubuntu18.04
+FROM nvidia/cuda:10.0-cudnn7-runtime-ubuntu18.04
 MAINTAINER Ryan Baumann <ryan.baumann@gmail.com>
 ENV PBR_VERSION 0.8.0
 ENV DEBIAN_FRONTEND noninteractive
