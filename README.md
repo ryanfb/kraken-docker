@@ -19,7 +19,7 @@ If you're trying to train networks with this image, you may run into an error li
 
     ERROR: Unexpected bus error encountered in worker. This might be caused by insufficient shared memory (shm).
 
-This is because Docker defaults to 64MB of SHM no matter how much memory its allocated. You can override this by passing e.g. `--shm-size=256M` as an argument to `docker run` before the Docker image name.
+This is because Docker defaults to 64MB of SHM no matter how much memory it's allocated. You can override this by passing e.g. `--shm-size=256M` as an argument to `docker run` before the Docker image name.
 
 ## CUDA
 
