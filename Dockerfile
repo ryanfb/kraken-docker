@@ -21,6 +21,7 @@ RUN apt-get update && apt-get -y install --no-install-recommends \
         python3-pip \
         python3-pil \
         python3-click \
+        python3-regex \
         python3-lxml \
         locales \
     && locale-gen en_US && locale-gen en_US.UTF-8 && update-locale \
@@ -30,7 +31,6 @@ RUN apt-get update && apt-get -y install --no-install-recommends \
     && pip3 install . \
     && apt-get -y remove --purge --auto-remove \
         gcc \
-        python3-pip \
     && apt-get clean \
     && rm -rf /tmp/* /var/lib/apt/lists/* /var/tmp/* .git
 RUN    kraken get default \
