@@ -10,6 +10,7 @@ ENV LC_ALL en_US.UTF-8
 WORKDIR /kraken
 
 ADD kraken /kraken
+ADD MANIFEST.in /kraken/MANIFEST.in
 RUN apt-get update && apt-get -y install --no-install-recommends \
         ca-certificates \
         gcc \
@@ -47,5 +48,3 @@ RUN    kraken get default \
 
 VOLUME /data
 WORKDIR /data
-
-ENTRYPOINT ["/usr/local/bin/kraken"]
