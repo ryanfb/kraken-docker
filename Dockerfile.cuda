@@ -39,19 +39,8 @@ RUN apt-get update && apt-get -y install --no-install-recommends \
         gcc \
     && apt-get clean \
     && rm -rf /tmp/* /var/lib/apt/lists/* /var/tmp/*
-RUN    kraken get default
-#    && kraken get fraktur \
-#    && kraken get script-detection \
-#    && kraken get goodell \
-#    && kraken get loeb \
-#    && kraken get migne-njp \
-#    && kraken get migne \
-#    && kraken get non-teubner-german-serif \
-#    && kraken get omnibus \
-#    && kraken get porson \
-#    && kraken get rahlfs \
-#    && kraken get teubner-serif
 
-VOLUME /root/.config/kraken
+VOLUME /models
+RUN mkdir -pv /root/.config && ln -sv /models /root/.config/kraken
 VOLUME /data
 WORKDIR /data

@@ -13,6 +13,16 @@ Or to drop into an interactive `bash` shell with the current host directory mapp
 
     docker run -it -v $(pwd):/data ryanfb/kraken /bin/bash
 
+## Kraken Models
+
+This container no longer ships with any Kraken models pre-downloaded. There's a persistent Docker volume set up at `/models`, so you can do e.g.:
+
+    docker run -it -v models:/models ryanfb/kraken kraken get default
+
+And downloaded models will persist across runs when you use that volume:
+
+    docker run -it -v models:/models ryanfb/kraken ls /models
+
 ## Shared Memory
 
 If you're trying to train networks with this image, you may run into an error like:
