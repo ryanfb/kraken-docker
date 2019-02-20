@@ -1,6 +1,6 @@
 FROM ubuntu:18.04
 MAINTAINER Ryan Baumann <ryan.baumann@gmail.com>
-ENV PBR_VERSION 0.8.0
+ENV PBR_VERSION 1.0.1
 ENV DEBIAN_FRONTEND noninteractive
 ENV PYTHONIOENCODING utf8
 ENV LANG en_US.UTF-8
@@ -10,10 +10,11 @@ ENV LC_ALL en_US.UTF-8
 WORKDIR /kraken
 
 ADD kraken /kraken
-ADD MANIFEST.in /kraken/MANIFEST.in
+ADD .git/modules/kraken /kraken/.git
 RUN apt-get update && apt-get -y install --no-install-recommends \
         ca-certificates \
         gcc \
+        git \
         python3-setuptools \
         python3-dev \
         python3-scipy \
@@ -32,19 +33,20 @@ RUN apt-get update && apt-get -y install --no-install-recommends \
     && apt-get -y remove --purge --auto-remove \
         gcc \
     && apt-get clean \
-    && rm -rf /tmp/* /var/lib/apt/lists/* /var/tmp/* .git
-RUN    kraken get default \
-    && kraken get fraktur \
-    && kraken get script-detection \
-    && kraken get goodell \
-    && kraken get loeb \
-    && kraken get migne-njp \
-    && kraken get migne \
-    && kraken get non-teubner-german-serif \
-    && kraken get omnibus \
-    && kraken get porson \
-    && kraken get rahlfs \
-    && kraken get teubner-serif
+    && rm -rf /tmp/* /var/lib/apt/lists/* /var/tmp/*
+RUN    kraken get default
+#     && kraken get fraktur \
+#     && kraken get script-detection \
+#     && kraken get goodell \
+#     && kraken get loeb \
+#     && kraken get migne-njp \
+#     && kraken get migne \
+#     && kraken get non-teubner-german-serif \
+#     && kraken get omnibus \
+#     && kraken get porson \
+#     && kraken get rahlfs \
+#     && kraken get teubner-serif
 
+VOLUME /root/.config/kraken
 VOLUME /data
 WORKDIR /data
