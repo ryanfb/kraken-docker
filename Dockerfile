@@ -25,9 +25,13 @@ RUN apt-get update && apt-get -y install --no-install-recommends \
         python3-regex \
         python3-lxml \
         locales \
+        wget \
     && locale-gen en_US && locale-gen en_US.UTF-8 && update-locale \
     && pip3 install wheel \
     && pip3 install pbr \
+    && wget -q https://download.pytorch.org/whl/cpu/torch-1.0.1.post2-cp36-cp36m-linux_x86_64.whl \
+    && pip3 install torch-1.0.1.post2-cp36-cp36m-linux_x86_64.whl \
+    && pip3 install torchvision \
     && pip3 install -r requirements.txt \
     && pip3 install . \
     && apt-get -y remove --purge --auto-remove \
