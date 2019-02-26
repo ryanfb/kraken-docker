@@ -15,6 +15,7 @@ RUN apt-get update && apt-get -y install --no-install-recommends \
         ca-certificates \
         gcc \
         git \
+        libgomp1 \
         python3-setuptools \
         python3-dev \
         python3-scipy \
