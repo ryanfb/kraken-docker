@@ -13,6 +13,10 @@ ADD kraken /kraken
 ADD .git/modules/kraken /kraken/.git
 RUN apt-get update && apt-get -y install --no-install-recommends \
         ca-certificates \
+        build-essential \
+        parallel \
+        unzip \
+        time \
         gcc \
         git \
         libgomp1 \
